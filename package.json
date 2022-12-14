@@ -12,6 +12,8 @@
     "axios": "^1.2.1",
     "core-js": "^3.8.3",
     "firebase": "^9.14.0",
+    "flowbite": "^1.5.5",
+    "flowbite-vue": "^0.0.9",
     "mysql": "github:mysqljs/mysql",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
