@@ -25,33 +25,26 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';
-
 export default {
-  setup() {
-    const email = ref('');
-    const password = ref('');
-    const error = ref(null);
-
-    const store = useStore();
-    const router = useRouter();
-
-    const handleLogin = async () => {
-      try {
-        await store.dispatch('login', {
-          email: email.value,
-          password: password.value,
-        });
-        router.push('/dashboard');
-      } catch (err) {
-        error.value = err.message;
-      }
-    };
+  data() {
     return {
-      handleLogin, email, password, error,
+      email: '',
+      password: '',
+      error: null,
     };
+  },
+  methods: {
+    async handleLogin() {
+      try {
+        await this.$store.dispatch('login', {
+          email: this.email,
+          password: this.password,
+        });
+        this.$router.push('/dashboard');
+      } catch (err) {
+        this.error.value = err.message;
+      }
+    },
   },
 };
 </script>

@@ -21,6 +21,11 @@ const routes = [
     component: DashboardView,
     meta: { requiresAuth: true },
   },
+  {
+    path: '/:pathMatch(.*)*',
+    component: DashboardView,
+    meta: { requiresAuth: true },
+  },
 ];
 
 const router = createRouter({
