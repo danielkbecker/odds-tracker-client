@@ -24,12 +24,12 @@
                 <label for="email" class="email block mb-2 text-sm
        font-medium text-gray-900 dark:text-white">Email:
                   <input type="email" name="emailLogin" v-model="loginEmail" required
-                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                         class="emailInput border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 font-normal">
                 </label>
                 <label for="password" class="email block mb-2 text-sm
        font-medium text-gray-900 dark:text-white">Password:
                   <input type="password" name="passwordLogin" v-model="loginPassword" required
-                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                         class="passwordInput border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 font-normal">
                 </label>
                 <button class="flex mt-4 px-4 py-2 text-center rounded bg-blue-500 text-white mx-auto uppercase text-xs font-bold">
                   Login

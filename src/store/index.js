@@ -1,3 +1,4 @@
+import CreatePersistedState from 'vuex-persistedstate';
 import { createStore } from 'vuex';
 // Firebase imports
 import auth from './modules/auth';
@@ -16,5 +17,5 @@ export default createStore({
   modules: {
     auth,
   },
-  plugins: [],
+  plugins: [CreatePersistedState()],
 });

@@ -1,12 +1,16 @@
 <template>
-  <nav class="navbar flex flex-row bg-blue-600 justify-center">
+    <!-- eslint-disable max-len -->
+  <nav class="grid grid-cols-3 bg-blue-600 justify-center">
+    <div class="leftCol">
+      .
+    </div>
     <router-link to="/dashboard">
-      <h1 class="title">Sports Odds Tracking</h1>
+      <h1 class="title text-center">Sports Odds Tracking</h1>
     </router-link>
 
     <!-- for logged in users -->
-    <div class="basis-1/3 text-end logout" v-if="isLoggedIn">
-      <button @click="logout">Logout</button>
+    <div class="text-end logout" v-if="isLoggedIn">
+      <button class="flex mt-4 px-4 py-2 rounded bg-blue-500 text-white mx-auto uppercase text-xs font-bold" @click="logout">Logout</button>
     </div>
 
     <!-- for logged out users -->
@@ -34,8 +38,9 @@ export default {
 </script>
 <style scoped>
 
-.navbar {
-  color: white;
+.leftCol:after {
+  content: '.';
+  visibility: hidden;
 }
 
 .title {
