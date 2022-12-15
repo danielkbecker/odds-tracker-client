@@ -16,7 +16,8 @@ export default {
   },
   beforeMount() {
     axios
-      .get('https://odds-tracker-server-pbmrnudl7a-uc.a.run.app/query')
+      // Can do /query instead
+      .get('https://odds-tracker-server-pbmrnudl7a-uc.a.run.app/ping')
       .then((response) => {
         this.info = response.data;
       })

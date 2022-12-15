@@ -1,28 +1,27 @@
 <template>
     <!-- eslint-disable max-len -->
-  <nav class="grid grid-cols-3 bg-blue-600 justify-center">
-    <div class="leftCol">
-      .
-    </div>
-    <router-link to="/dashboard">
-      <h1 class="title text-center">Sports Odds Tracking</h1>
-    </router-link>
-
+  <nav class="grid grid-cols-3 border-b-4" >
     <!-- for logged in users -->
-    <div class="text-end logout" v-if="isLoggedIn">
-      <button class="flex mt-4 px-4 py-2 rounded bg-blue-500 text-white mx-auto uppercase text-xs font-bold" @click="logout">Logout</button>
-    </div>
+    <router-link to="/dashboard">
+      <img class="image max-h-16 ml-5" src="../assets/logo.png" alt="foo">
+    </router-link>
+    <div>
 
-    <!-- for logged out users -->
-<!--    <div class="flex space-x-4">-->
-<!--      <router-link to="/login">Login</router-link>-->
-<!--      <router-link to="/signup">Signup</router-link>-->
-<!--    </div>-->
+    </div>
+    <div>
+      <button class="mt-.5 mb-.5 px-4 py-2 rounded bg-blue-600 text-white uppercase text-xs font-bold hover:bg-blue-800" v-if="isLoggedIn" @click="logout">
+        Logout
+      </button>
+    </div>
   </nav>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+    };
+  },
   computed: {
     isLoggedIn() {
       return this.$store.getters.isAuthenticated;
@@ -38,14 +37,13 @@ export default {
 </script>
 <style scoped>
 
-.leftCol:after {
+.hideDot:after {
   content: '.';
   visibility: hidden;
 }
 
 .title {
   margin: 5px 0px 10px 0;
-  color: white;
 }
 
 .logout {
