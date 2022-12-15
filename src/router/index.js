@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import SignupView from '../views/SignupView.vue';
 import SplashView from '../views/SplashView.vue';
 import DashboardView from '../views/DashboardView.vue';
 import store from '../store';
@@ -9,11 +8,6 @@ const routes = [
     path: '/',
     name: 'splash',
     component: SplashView,
-  },
-  {
-    path: '/signup',
-    name: 'Signup',
-    component: SignupView,
   },
   {
     path: '/dashboard',

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar flex flex-row bg-blue-500 justify-center">
+  <nav class="navbar flex flex-row bg-blue-600 justify-center">
     <router-link to="/dashboard">
       <h1 class="title">Sports Odds Tracking</h1>
     </router-link>
