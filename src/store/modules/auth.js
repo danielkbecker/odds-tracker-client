@@ -37,9 +37,9 @@ export default {
         throw new Error('login failed');
       }
     },
-    async logout(context) {
+    async logout() {
       signOut(auth).then(
-        context.commit('setUser', null),
+        this.commit('setUser', null),
       );
     },
   },
