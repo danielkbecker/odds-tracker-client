@@ -11,7 +11,7 @@ export default {
     user: null,
   },
   getters: {
-    isAuthenticated: (state) => state.user != null,
+    isAuthenticated: (state) => (!!state.user && state.user !== undefined ? state.user : null),
   },
   mutations: {
     setUser(state, payload) {

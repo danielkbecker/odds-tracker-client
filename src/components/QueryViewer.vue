@@ -4,7 +4,6 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
 
 export default {
   data() {
@@ -15,17 +14,15 @@ export default {
     };
   },
   beforeMount() {
-    axios
-      // Can do /query instead
-      .get('https://odds-tracker-server-pbmrnudl7a-uc.a.run.app/ping')
+    // Can do /query instead
+    this.axios.get('https://odds-tracker-server-pbmrnudl7a-uc.a.run.app/ping')
       .then((response) => {
         this.info = response.data;
       })
       .catch((error) => {
         console.log(error);
         this.errored = true;
-      })
-      .finally(this.loading = false);
+      });
   },
 };
 
