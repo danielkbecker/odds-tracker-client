@@ -17,7 +17,7 @@ export default {
     setUser(state, payload) {
       state.user = payload;
       // Log out the user state
-      console.log(state.user);
+      // console.log(state.user);
     },
   },
   actions: {
