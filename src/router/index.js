@@ -8,6 +8,7 @@ const routes = [
     path: '/',
     name: 'splash',
     component: SplashView,
+    meta: { requiresAuth: false },
   },
   {
     path: '/dashboard',
@@ -35,6 +36,10 @@ router.beforeEach((to, from, next) => {
     }
     next('/');
   } else {
+    if (store.getters.isAuthenticated) {
+      next('/dashboard');
+      return;
+    }
     next();
   }
 });

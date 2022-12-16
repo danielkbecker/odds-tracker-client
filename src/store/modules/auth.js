@@ -11,7 +11,7 @@ export default {
     user: null,
   },
   getters: {
-    isAuthenticated: (state) => !!state.user,
+    isAuthenticated: (state) => state.user != null,
   },
   mutations: {
     setUser(state, payload) {
@@ -38,8 +38,9 @@ export default {
       }
     },
     async logout(context) {
-      await signOut(auth);
-      context.commit('setUser', null);
+      signOut(auth).then(
+        context.commit('setUser', null),
+      );
     },
   },
   modules: {
