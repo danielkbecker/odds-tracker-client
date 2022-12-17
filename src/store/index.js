@@ -3,6 +3,12 @@ import { createStore } from 'vuex';
 import loader from './modules/loader';
 import auth from './modules/auth';
 
+const persistedStateOptions = {
+  paths: [
+    'auth',
+  ],
+};
+
 // import axios from 'axios';
 
 export default createStore({
@@ -18,5 +24,5 @@ export default createStore({
     auth,
     loader,
   },
-  plugins: [CreatePersistedState()],
+  plugins: [CreatePersistedState(persistedStateOptions)],
 });
