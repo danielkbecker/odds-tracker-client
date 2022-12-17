@@ -9,7 +9,6 @@ export default {
   },
   mutations: {
     loading(state, isLoading) {
-      console.log({ isLoading });
       if (isLoading) {
         state.refCount += 1;
         state.isLoading = true;
