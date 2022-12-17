@@ -9,8 +9,6 @@ const persistedStateOptions = {
   ],
 };
 
-// import axios from 'axios';
-
 export default createStore({
   state: {
   },
