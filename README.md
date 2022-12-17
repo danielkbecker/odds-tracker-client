@@ -19,7 +19,3 @@ npm run build
 ```
 npm run lint
 ```
-
-Notes to Self:
-
-text-right on header to move logout button possibly

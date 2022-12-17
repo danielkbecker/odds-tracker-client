@@ -12,6 +12,16 @@ describe('Login Flow', () => {
   afterEach(() => {
     cy.saveLocalStorage();
   });
+  it('User who is not logged in cannot get to dashboard', () => {
+    cy.visit('/dashboard');
+    cy.url().should('not.contain', '/dashboard');
+  });
+
+  it('User who is not logged in cannot get to unused route and they are redirected to login page', () => {
+    cy.visit('/foo');
+    cy.url().should('not.contain', '/foo');
+    cy.contains('label', 'Email:');
+  });
 
   it('Splash page has correct content', () => {
     cy.visit('/');
@@ -34,6 +44,16 @@ describe('Login Flow', () => {
   it('After a user is logged in, they cannot navigate back to login page without logging out', () => {
     // Visit here?
     cy.visit('/');
+    cy.url().should('include', '/dashboard');
+  });
+  it('After a user is logged in, if they try to navigate to a route that does not exist, they will get the PageNotExist view', () => {
+    // Visit here?
+    cy.visit('/foo');
+    cy.contains('h1', 'Oops this page does not exist.');
+  });
+  it('If a user is on PageNotExist view and they click on the back button, they will be taken back to the last page they were at.', () => {
+    // Visit here?
+    cy.get('button[id="backbtn"]').click();
     cy.url().should('include', '/dashboard');
   });
 });
