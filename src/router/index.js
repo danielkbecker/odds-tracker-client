@@ -9,6 +9,7 @@ const routes = [
     path: '/',
     name: 'splash',
     component: SplashView,
+    alias: '/sign-up',
     meta: { requiresAuth: false },
   },
   {

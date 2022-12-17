@@ -16,11 +16,10 @@ export default {
   mutations: {
     setUser(state, payload) {
       state.user = payload;
-      // Log out the user state
-      // console.log(state.user);
     },
   },
   actions: {
+    // In the future, will want to do email verification https://redfern.dev/articles/email-verification-firebase-vuejs/
     async signup(context, { email, password }) {
       const response = await createUserWithEmailAndPassword(auth, email, password);
       if (response) {
