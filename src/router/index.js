@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import SplashView from '../views/SplashView.vue';
 import DashboardView from '../views/DashboardView.vue';
+import PageNotExist from '../views/PageNotExist.vue';
 import store from '../store';
 
 const routes = [
@@ -18,7 +19,7 @@ const routes = [
   },
   {
     path: '/:pathMatch(.*)*',
-    component: DashboardView,
+    component: PageNotExist,
     meta: { requiresAuth: true },
   },
 ];
