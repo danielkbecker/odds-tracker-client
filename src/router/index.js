@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { useAuthStore } from '../stores/AuthStore';
 import SplashView from '../views/SplashView.vue';
 import DashboardView from '../views/DashboardView.vue';
 import PageNotExist from '../views/PageNotExist.vue';
-import store from '../store';
+// import store from '../store';
 
 const routes = [
   {
@@ -31,14 +32,15 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  const authStores = useAuthStore();
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (store.getters.isAuthenticated) {
+    if (authStores.isAuthenticated) {
       next();
       return;
     }
     next('/');
   } else {
-    if (store.getters.isAuthenticated) {
+    if (authStores.isAuthenticated) {
       next('/dashboard');
       return;
     }

@@ -63,6 +63,9 @@
 </template>
 
 <script>
+import { mapActions } from 'pinia';
+import { useAuthStore } from '../stores/AuthStore';
+
 export default {
   name: 'splashView',
   data() {
@@ -76,12 +79,13 @@ export default {
     };
   },
   methods: {
+    ...mapActions(useAuthStore, ['signup', 'login']),
     toggleTabs(tabNumber) {
       this.openTab = tabNumber;
     },
     async handleLogin() {
       try {
-        await this.$store.dispatch('login', {
+        await this.login('login', {
           email: this.loginEmail,
           password: this.loginPassword,
         });
@@ -92,7 +96,7 @@ export default {
     },
     async handleSignup() {
       try {
-        await this.$store.dispatch('signup', {
+        await this.signup('signup', {
           email: this.signupEmail,
           password: this.signupPassword,
         });
