@@ -9,7 +9,7 @@
 
     </div>
     <div>
-      <button class="mt-.5 mb-.5 px-4 py-2 rounded bg-blue-600 text-white uppercase text-xs font-bold hover:bg-blue-800" v-if="isLoggedIn" @click="logout">
+      <button class="mt-.5 mb-.5 px-4 py-2 rounded bg-blue-600 text-white uppercase text-xs font-bold hover:bg-blue-800" v-if="isLoggedIn" @click="logoutFromApp">
         Logout
       </button>
     </div>
@@ -17,19 +17,24 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'pinia';
+import { useAuthStore } from '../stores/AuthStore';
+
 export default {
   data() {
     return {
     };
   },
   computed: {
+    ...mapState(useAuthStore, ['user']),
     isLoggedIn() {
-      return this.$store.getters.isAuthenticated;
+      return this.user != null;
     },
   },
   methods: {
-    logout() {
-      this.$store.dispatch('logout');
+    ...mapActions(useAuthStore, ['logout']),
+    logoutFromApp() {
+      this.logout();
       this.$router.push({ path: '/' });
     },
   },

@@ -1,12 +1,14 @@
 <template>
   <div>
   <h1>You are logged in</h1>
-    <div v-if="isAuthenticated">{{isAuthenticated.email}}</div>
+    <div v-if="isLoggedIn">{{emailAddress}}</div>
     <QueryViewer/>
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'pinia';
+import { useAuthStore } from '../stores/AuthStore';
+// import { mapGetters } from 'vuex';
 import QueryViewer from '../components/QueryViewer.vue';
 
 export default {
@@ -14,9 +16,16 @@ export default {
     QueryViewer,
   },
   computed: {
-    ...mapGetters([
-      'isAuthenticated',
-    ]),
+    ...mapState(useAuthStore, ['user']),
+    isLoggedIn() {
+      return this.user != null;
+    },
+    emailAddress() {
+      return this.user.email;
+    },
+    // ...mapGetters([
+    //   'isAuthenticated',
+    // ]),
   },
 };
 </script>
