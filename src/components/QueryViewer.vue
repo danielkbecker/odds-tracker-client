@@ -3,13 +3,15 @@
     {{info}}
   </div>
   <button @click="getFooData">Click me</button>
-    <div v-if="isLoading">
+    <div v-if="isLoadingGet">
       <LoadingIndicator/>
-      <div>Loading... ({{refCount}})</div>
+      <div>Loading... ({{refCounter}})</div>
     </div>
 </template>
 <script>
+import { mapState } from 'pinia';
 import LoadingIndicator from '@/components/LoadingIndicator/LoadingIndicator.vue';
+import { useLoaderStore } from '../stores/LoaderStore';
 
 export default {
   components: { LoadingIndicator },
@@ -22,11 +24,12 @@ export default {
     };
   },
   computed: {
-    isLoading() {
-      return this.$store.getters.isLoadingGet;
+    ...mapState(useLoaderStore, ['isLoading', 'refCount']),
+    isLoadingGet() {
+      return this.isLoading;
     },
-    refCount() {
-      return this.$store.getters.refCounter;
+    refCounter() {
+      return this.refCount;
     },
   },
   methods: {
