@@ -3,7 +3,6 @@ import { useAuthStore } from '../stores/AuthStore';
 import SplashView from '../views/SplashView.vue';
 import DashboardView from '../views/DashboardView.vue';
 import PageNotExist from '../views/PageNotExist.vue';
-// import store from '../store';
 
 const routes = [
   {
