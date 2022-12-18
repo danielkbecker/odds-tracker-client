@@ -6,13 +6,13 @@
 </template>
 <script>
 import { mapActions } from 'pinia';
-import { useLoaderStore } from './stores/LoaderStore';
+import { useLoadingIndicatorStore } from './stores/LoadingIndicatorStore';
 import Navbar from './components/NavBar.vue';
 
 export default {
   components: { Navbar },
   methods: {
-    ...mapActions(useLoaderStore, ['loading']),
+    ...mapActions(useLoadingIndicatorStore, ['loading']),
   },
   created() {
     this.axios.interceptors.request.use((config) => {

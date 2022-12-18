@@ -1,8 +1,8 @@
-import PageNotExist from './PageNotExist.vue';
+import SplashView from '../SplashView.vue';
 
 describe('<PageNotExist />', () => {
   it('renders', () => {
     // see: https://test-utils.vuejs.org/guide/
-    cy.mount(PageNotExist);
+    cy.mount(SplashView);
   });
 });

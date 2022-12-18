@@ -10,8 +10,8 @@
 </template>
 <script>
 import { mapState } from 'pinia';
-import LoadingIndicator from '@/components/LoadingIndicator/LoadingIndicator.vue';
-import { useLoaderStore } from '../stores/LoaderStore';
+import LoadingIndicator from '@/components/LoadingIndicator.vue';
+import { useLoadingIndicatorStore } from '../stores/LoadingIndicatorStore';
 
 export default {
   components: { LoadingIndicator },
@@ -24,7 +24,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(useLoaderStore, ['isLoading', 'refCount']),
+    ...mapState(useLoadingIndicatorStore, ['isLoading', 'refCount']),
     isLoadingGet() {
       return this.isLoading;
     },

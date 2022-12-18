@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
 // eslint-disable-next-line import/prefer-default-export
-export const useLoaderStore = defineStore('LoaderStore', {
+export const useLoadingIndicatorStore = defineStore('LoadingIndicatorStore', {
   state: () => ({
     refCount: 0,
     isLoading: false,
