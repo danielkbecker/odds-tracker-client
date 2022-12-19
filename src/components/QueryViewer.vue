@@ -2,6 +2,13 @@
   <div>
     {{info}}
   </div>
+  <div>
+    {{fooInfo}}
+  </div>
+  <div>
+    {{newTables}}
+  </div>
+  <button @click="getTables">Click me for new way to get tables</button>
   <button @click="getFooData">Click me</button>
     <div v-if="isLoadingGet">
       <LoadingIndicator/>
@@ -12,8 +19,13 @@
 import { mapState } from 'pinia';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import { useLoadingIndicatorStore } from '../stores/LoadingIndicatorStore';
+import { useVegasInsiderStore } from '../stores/VegasInsiderStore';
 
 export default {
+  setup() {
+    const vegasInsiderStore = useVegasInsiderStore();
+    return { vegasInsiderStore };
+  },
   components: { LoadingIndicator },
   data() {
     return {
@@ -21,6 +33,7 @@ export default {
       loading: true,
       errored: false,
       fooInfo: '',
+      newTables: null,
     };
   },
   computed: {
@@ -33,6 +46,11 @@ export default {
     },
   },
   methods: {
+    getTables() {
+      this.vegasInsiderStore.fetchTablesFromBackend();
+      console.log('New Tables', this.vegasInsiderStore.tables);
+      this.newTables = this.vegasInsiderStore.tables;
+    },
     getFooData() {
       this.axios
         .get('https://reqres.in/api/users?delay=$3')
@@ -43,8 +61,7 @@ export default {
   },
   beforeMount() {
     // Can do /query instead
-    console.log(this.axios.defaults.baseURL);
-    this.axios.get('/ping')
+    this.axios.get('/query/tables')
       .then((response) => {
         this.info = response.data;
       })
