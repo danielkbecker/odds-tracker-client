@@ -43,7 +43,8 @@ export default {
   },
   beforeMount() {
     // Can do /query instead
-    this.axios.get('https://odds-tracker-server-pbmrnudl7a-uc.a.run.app/ping')
+    console.log(this.axios.defaults.baseURL);
+    this.axios.get('/ping')
       .then((response) => {
         this.info = response.data;
       })

@@ -11,6 +11,7 @@ const pinia = createPinia();
 const app = createApp(App);
 pinia.use(piniaPluginPersistedState);
 app.use(VueAxios, axios);
+app.axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
 app.use(pinia);
 app.use(router);
 app.mount('#app');
