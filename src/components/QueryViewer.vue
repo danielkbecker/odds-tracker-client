@@ -8,6 +8,10 @@
   <div>
     {{newTables}}
   </div>
+  <div>
+    {{nhl_table}}
+  </div>
+  <button @click="postRequest('nhl_odds')">Click me to test post request</button>
   <button @click="getTables">Click me for new way to get tables</button>
   <button @click="getFooData">Click me</button>
     <div v-if="isLoadingGet">
@@ -34,6 +38,7 @@ export default {
       errored: false,
       fooInfo: '',
       newTables: null,
+      nhl_table: null,
     };
   },
   computed: {
@@ -46,6 +51,10 @@ export default {
     },
   },
   methods: {
+    postRequest(table) {
+      this.vegasInsiderStore.getOddsTable(table);
+      this.nhl_table = this.vegasInsiderStore.requested_table;
+    },
     getTables() {
       this.vegasInsiderStore.fetchTablesFromBackend();
       console.log('New Tables', this.vegasInsiderStore.tables);
