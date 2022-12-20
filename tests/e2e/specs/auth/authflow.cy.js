@@ -23,13 +23,6 @@ describe('Login Flow', () => {
     cy.contains('label', 'Email:');
   });
 
-  it('Splash page has correct content', () => {
-    cy.visit('/');
-    cy.contains('label', 'Email:');
-    cy.contains('label', 'Password:');
-    cy.contains('a', 'Login');
-    cy.contains('a', 'Sign Up');
-  });
   it('Logging in pushes user to /dashboard', () => {
     // Visit here?
     cy.get('input[name=emailLogin]').type(Cypress.env('username'));

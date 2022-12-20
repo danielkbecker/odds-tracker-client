@@ -2,61 +2,30 @@
   <!-- eslint-disable max-len -->
   <div class="flex flex-wrap mx-auto">
     <div class="flex flex-col w-96 mx-auto">
-      <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row ">
-        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block hover:bg-blue-800 leading-normal" @click.prevent="toggleTabs(1)" @keydown="toggleTabs(1)"
-             v-bind:class="{'text-blue-600 bg-white': openTab !== 1, 'text-white bg-blue-600': openTab === 1}">
-            Login
-          </a>
-        </li>
-        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal hover:bg-blue-800" @click.prevent="toggleTabs(2)" @keydown="toggleTabs(1)"
-             v-bind:class="{'text-blue-600 bg-white': openTab !== 2, 'text-white bg-blue-600': openTab === 2}">
-            Sign Up
-          </a>
-        </li>
-      </ul>
-      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-        <div class="px-4 py-5 flex-auto ">
-          <div class="tab-content tab-space">
-            <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-              <form @submit.prevent="handleLogin">
-                <label for="email" class="email block mb-2 text-sm
+      <h1 class="flex flex-col w-96 justify-center text-center font-bold text-4xl mt-20">Sign In</h1>
+      <div class="flex flex-col w-96 justify-center text-center mt-2 text-neutral-500">Log in and track your bets.</div>
+      <div class="flex flex-col w-96 mt-6 justify-center" v-if="signInToggled">
+        <form @submit.prevent="handleLogin">
+          <label for="email" class="email block mb-2 text-sm
        font-medium text-gray-900 dark:text-white">Email:
-                  <input type="email" name="emailLogin" v-model="loginEmail" required
-                         class="emailInput border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 font-normal">
-                </label>
-                <label for="password" class="email block mb-2 text-sm
+            <input type="email" name="emailLogin" v-model="loginEmail" required
+                   class="autofill:shadow-fill-white emailInput border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 font-normal">
+          </label>
+          <label for="password" class="email block mb-2 text-sm
        font-medium text-gray-900 dark:text-white">Password:
-                  <input type="password" name="passwordLogin" v-model="loginPassword" required
-                         class="passwordInput border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 w-full p-2.5 dark:bg-gray-700 font-normal">
-                </label>
-                <button class="flex mt-4 px-4 py-2 text-center rounded hover:bg-blue-800 bg-blue-600 text-white mx-auto uppercase text-xs font-bold">
-                  Login
-                </button>
-                <div v-if="error">{{ error }}</div>
-              </form>
-            </div>
-            <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
-              <form @submit.prevent="handleSignup">
-                <label for="email" class="email block mb-2 text-sm
-       font-medium text-gray-900 dark:text-white">Email:
-                  <input type="email" name="emailSignup" v-model="signupEmail" required
-                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                </label>
-                <label for="password" class="email block mb-2 text-sm
-       font-medium text-gray-900 dark:text-white">Password:
-                  <input type="password" name="passwordSignup" v-model="signupPassword" required
-                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                </label>
-                <button class="flex mt-4 px-4 py-2 text-center rounded hover:bg-blue-800 bg-blue-600 text-white mx-auto uppercase text-xs font-bold">
-                  Sign Up
-                </button>
-                <div v-if="error">{{ error }}</div>
-              </form>
+            <input type="password" name="passwordLogin" v-model="loginPassword" required
+                   class="passwordInput border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 w-full p-2.5 dark:bg-gray-700 font-normal">
+          </label>
+          <div v-if="error">{{ error }}</div>
+          <div class="flex flex-row w-96 mt-1">
+            <div class="text-left text-blue-500 text-sm mt-1">Forgot Password?</div>
+            <div class="flex grow justify-end">
+              <button class="flex px-4 py-2 text-right rounded hover:bg-blue-800 bg-blue-600 text-white uppercase text-xs font-bold" @click.prevent="handleLogin">
+                Sign in
+              </button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -76,13 +45,11 @@ export default {
       signupEmail: '',
       signupPassword: '',
       error: null,
+      signInToggled: true,
     };
   },
   methods: {
     ...mapActions(useAuthStore, ['signup', 'login']),
-    toggleTabs(tabNumber) {
-      this.openTab = tabNumber;
-    },
     async handleLogin() {
       try {
         await this.login('login', {
@@ -110,7 +77,7 @@ export default {
 </script>
 
 <style scoped>
-.block {
-  cursor: pointer;
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 </style>

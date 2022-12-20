@@ -1,16 +1,16 @@
 <template>
     <!-- eslint-disable max-len -->
-  <nav class="grid grid-cols-3 border-b-4" >
+  <nav class="flex flex-row border-b-4" >
     <!-- for logged in users -->
-    <router-link to="/dashboard">
-      <img class="image max-h-16 ml-5" src="../assets/logo.png" alt="foo">
-    </router-link>
-    <div>
-
+    <div class="flex w-1/3 items-center">
+      <img class="max-h-8 ml-4" src="../assets/hamburger.png" alt="foo" v-if="isLoggedIn">
     </div>
-    <div>
-      <button class="mt-.5 mb-.5 px-4 py-2 rounded bg-blue-600 text-white uppercase text-xs font-bold hover:bg-blue-800" v-if="isLoggedIn" @click="logoutFromApp">
-        Logout
+    <div class="flex w-1/3 justify-center">
+      <img class="image max-h-16" src="../assets/logo.png" alt="foo">
+    </div>
+    <div class="flex w-1/3 justify-end items-center">
+      <button class="pr-4 rounded bg-white" v-if="isLoggedIn" @click="logoutFromApp">
+      <img class="max-h-8" src="../assets/logout.png" alt="foo">
       </button>
     </div>
   </nav>
