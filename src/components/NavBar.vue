@@ -3,15 +3,16 @@
   <nav class="flex flex-row border-b-4" >
     <!-- for logged in users -->
     <div class="flex w-1/3 items-center">
-      <img class="max-h-8 ml-4" src="../assets/hamburger.png" alt="foo" v-if="isLoggedIn">
+<!--      <img class="max-h-8 ml-4" src="../assets/hamburger.png" alt="foo" v-if="isLoggedIn">-->
     </div>
     <div class="flex w-1/3 justify-center">
       <img class="image max-h-16" src="../assets/logo.png" alt="foo">
     </div>
-    <div class="flex w-1/3 justify-end items-center">
+    <div class="flex w-1/3 justify-end">
       <button class="pr-4 rounded bg-white" v-if="isLoggedIn" @click="logoutFromApp">
       <img class="max-h-8" src="../assets/logout.png" alt="foo">
       </button>
+    <img class="max-h-8 self-center mr-4" src="../assets/accounticon.png" alt="foo">
     </div>
   </nav>
 </template>
