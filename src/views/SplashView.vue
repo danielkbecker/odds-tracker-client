@@ -2,7 +2,7 @@
   <!-- eslint-disable max-len -->
   <div class="flex flex-wrap mx-auto">
     <div class="flex flex-col w-96 mx-auto">
-      <h1 class="flex flex-col w-96 justify-center text-center font-bold text-4xl mt-20">Sign In</h1>
+      <h1 class="flex flex-col w-96 justify-center text-center font-bold text-4xl mt-10">Sign In</h1>
       <div class="flex flex-col w-96 justify-center text-center mt-2 text-neutral-500">Log in and track your bets.</div>
       <div class="flex flex-col w-96 mt-6 justify-center" v-if="signInToggled">
         <form @submit.prevent="handleLogin">

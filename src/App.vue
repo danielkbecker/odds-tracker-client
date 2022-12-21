@@ -4,7 +4,19 @@
     <component :is="currentMenu" :right="false" v-if="isLoggedIn">
       <a href="#">
         <i class="fa fa-fw fa-star-o"></i>
-        <span>Favourites</span>
+        <span>{{ email }}</span>
+      </a>
+            <a href="#">
+        <i class="fa fa-fw fa-star-o"></i>
+        <span>{{ email }}</span>
+      </a>
+            <a href="#">
+        <i class="fa fa-fw fa-star-o"></i>
+        <span>{{ email }}</span>
+      </a>
+            <a href="#">
+        <i class="fa fa-fw fa-star-o"></i>
+        <span>{{ email }}</span>
       </a>
     </component>
     <main id="page-wrap">
@@ -31,6 +43,12 @@ export default {
     ...mapState(useAuthStore, ['user']),
     isLoggedIn() {
       return this.user != null;
+    },
+    email() {
+      if (this.user != null) {
+        return this.user.email;
+      }
+      return '';
     },
   },
   components: { Navbar, Slide },

@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --mode development",
+    "serve:while-using-local-cloud-run": "vue-cli-service serve --mode development",
+    "serve:while-using-production-cloud-run": "vue-cli-service serve --mode production",
     "build": "vue-cli-service build",
     "test": "vue-cli-service test:e2e",
     "test:e2e": "vue-cli-service test:e2e --headless --e2e",
@@ -15,6 +16,7 @@
     "axios": "^1.2.1",
     "core-js": "^3.8.3",
     "firebase": "^9.14.0",
+    "flowbite": "^1.5.5",
     "mysql": "github:mysqljs/mysql",
     "pinia": "^2.0.28",
     "pinia-plugin-persistedstate": "^3.0.1",

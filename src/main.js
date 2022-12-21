@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import 'flowbite';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import { createPinia } from 'pinia';
