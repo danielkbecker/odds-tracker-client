@@ -68,7 +68,7 @@ export default {
         });
     },
   },
-  beforeMount() {
+  beforeCreate() {
     // Can do /query instead
     this.axios.get('/query/tables')
       .then((response) => {

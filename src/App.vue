@@ -1,24 +1,7 @@
 <template>
   <div id="app">
     <!-- https://github.com/mkdillard/vue3-burger-menu -->
-    <component :is="currentMenu" :right="false" v-if="isLoggedIn">
-      <a href="#">
-        <i class="fa fa-fw fa-star-o"></i>
-        <span>{{ email }}</span>
-      </a>
-            <a href="#">
-        <i class="fa fa-fw fa-star-o"></i>
-        <span>{{ email }}</span>
-      </a>
-            <a href="#">
-        <i class="fa fa-fw fa-star-o"></i>
-        <span>{{ email }}</span>
-      </a>
-            <a href="#">
-        <i class="fa fa-fw fa-star-o"></i>
-        <span>{{ email }}</span>
-      </a>
-    </component>
+    <SideBar v-if="isLoggedIn"/>
     <main id="page-wrap">
       <Navbar/>
       <router-view/>
@@ -26,8 +9,8 @@
   </div>
 </template>
 <script>
-import { Slide } from 'vue3-burger-menu';
 import { mapActions, mapState } from 'pinia';
+import SideBar from './components/SideBar.vue';
 import { useLoadingIndicatorStore } from './stores/LoadingIndicatorStore';
 import Navbar from './components/NavBar.vue';
 import { useAuthStore } from './stores/AuthStore';
@@ -44,14 +27,8 @@ export default {
     isLoggedIn() {
       return this.user != null;
     },
-    email() {
-      if (this.user != null) {
-        return this.user.email;
-      }
-      return '';
-    },
   },
-  components: { Navbar, Slide },
+  components: { Navbar, SideBar },
   methods: {
     ...mapActions(useLoadingIndicatorStore, ['loading']),
   },
