@@ -7,7 +7,13 @@ export const useVegasInsiderStore = defineStore('VegasInsiderStore', {
   state: () => ({
     tables: null,
     requested_table: null,
+    futures: null,
   }),
+  getters: {
+    current_odds(state) {
+      return state.requested_table;
+    },
+  },
   actions: {
     async fetchTablesFromBackend() {
       const response = await axios.get('/query/tables');

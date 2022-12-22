@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- https://github.com/mkdillard/vue3-burger-menu -->
     <SideBar v-if="isLoggedIn"/>
     <main id="page-wrap">
       <Navbar/>
@@ -18,7 +17,6 @@ import { useAuthStore } from './stores/AuthStore';
 export default {
   data() {
     return {
-      foo: true,
       currentMenu: 'slide',
     };
   },
