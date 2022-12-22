@@ -32,5 +32,5 @@ export const useVegasInsiderStore = defineStore('VegasInsiderStore', {
       }
     },
   },
-  persist: true,
+  persist: false,
 });

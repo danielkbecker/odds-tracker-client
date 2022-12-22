@@ -13,7 +13,7 @@
     </div>
 </template>
 <script>
-import { mapState } from 'pinia';
+import { mapState, mapActions } from 'pinia';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import { useLoadingIndicatorStore } from '../stores/LoadingIndicatorStore';
 import { useVegasInsiderStore } from '../stores/VegasInsiderStore';
@@ -40,11 +40,12 @@ export default {
   computed: {
     ...mapState(useLoadingIndicatorStore, ['isLoading']),
     ...mapState(useVegasInsiderStore, ['current_odds']),
+    ...mapActions(useVegasInsiderStore, ['getOddsTable']),
     isLoadingGet() {
       return this.isLoading;
     },
     display_odds() {
-      return this.vegasInsiderStore.current_odds.result;
+      return this.vegasInsiderStore.current_odds;
     },
   },
   watch: {
@@ -53,6 +54,12 @@ export default {
     },
   },
   methods: {
+    fetchInitOdds() {
+      this.vegasInsiderStore.getOddsTable('nfl');
+    },
+  },
+  beforeMount() {
+    this.fetchInitOdds();
   },
 };
 
