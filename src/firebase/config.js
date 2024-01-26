@@ -2,15 +2,15 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
-// The config we copied from firebase(Replace with your config)
+// (Replace with your config)
 const firebaseConfig = {
-  apiKey: 'AIzaSyAf1mdxvFtXQTfTq5vi5Gdr7Y20beuLUyQ',
-  authDomain: 'sports-odds-b78c3.firebaseapp.com',
-  projectId: 'sports-odds-b78c3',
-  storageBucket: 'sports-odds-b78c3.appspot.com',
-  messagingSenderId: '506896511571',
-  appId: '1:506896511571:web:9658acaa0244c798fb0ca6',
-  measurementId: 'G-S1J05BNWLF',
+  apiKey: 'AIzaSyCQAdIK_Tgi3LEiIAsvgw1ksq6UTsVRPCo',
+  authDomain: 'nil-angels-411817.firebaseapp.com',
+  projectId: 'nil-angels-411817',
+  storageBucket: 'nil-angels-411817.appspot.com',
+  messagingSenderId: '107014679011',
+  appId: '1:107014679011:web:96583de7fc6ea4b93b98d6',
+  measurementId: 'G-4C8MLNZWP1',
 };
 
 // initialize the firebase app

@@ -12,4 +12,8 @@ module.exports = {
   extends: [
     'plugin:cypress/recommended',
   ],
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false,
+  },
 };
